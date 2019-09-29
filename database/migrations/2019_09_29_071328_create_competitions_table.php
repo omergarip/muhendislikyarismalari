@@ -24,7 +24,7 @@ class CreateCompetitionsTable extends Migration
             $table->string('reward');
             $table->string('detail');
             $table->integer('fbappid');
-            $table->integer('counter')
+            $table->integer('counter');
             $table->timestamps();
         });
     }
