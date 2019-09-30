@@ -18,3 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('competitions', 'CompetitionsController');
+Route::resource('categories', 'CategoriesController');
+Route::get('trashed-posts', 'CompetitionsController@trashed')->name('trashed-competitions.index');
+Route::put('restore-post/{post}', 'CompetitionsController@restore')->name('restore.competitions');

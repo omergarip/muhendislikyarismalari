@@ -9,10 +9,13 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
+        "cocur/slugify": "^3.2",
+        "cviebrock/eloquent-sluggable": "6.0.*",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.0",
         "laravel/tinker": "^1.0",
-        "laravel/ui": "^1.0"
+        "laravel/ui": "^1.0",
+        "spatie/laravel-analytics": "^3.8"
     },
     "require-dev": {
         "facade/ignition": "^1.4",

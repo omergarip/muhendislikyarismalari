@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 return [
 
@@ -161,6 +161,9 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Spatie\Analytics\AnalyticsServiceProvider::class,
+        Cviebrock\EloquentSluggable\ServiceProvider::class,
+        Cocur\Slugify\Bridge\Laravel\SlugifyServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -225,6 +228,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Analytics' => Spatie\Analytics\AnalyticsFacade::class,
+        "Slugify" => Cocur\Slugify\Bridge\Laravel\SlugifyFacade::class,
 
     ],
 

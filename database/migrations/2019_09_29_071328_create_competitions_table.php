@@ -19,12 +19,14 @@ class CreateCompetitionsTable extends Migration
             $table->string('title');
             $table->integer('user_id');
             $table->string('image');
-            $table->text('content');
-            $table->timestamp('deadline');
-            $table->string('reward');
+            $table->text('description');
+            $table->timestamp('deadline')->nullable();
+            $table->text('reward');
             $table->string('detail');
-            $table->integer('fbappid');
+            $table->string('fbappid');
             $table->integer('counter');
+            $table->string('slug');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
