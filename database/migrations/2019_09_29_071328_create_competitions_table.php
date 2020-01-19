@@ -15,16 +15,15 @@ class CreateCompetitionsTable extends Migration
     {
         Schema::create('competitions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('organizer');
+            $table->string('organizer')->nullable();
             $table->string('title');
             $table->integer('user_id');
             $table->string('image');
             $table->text('description');
             $table->timestamp('deadline')->nullable();
-            $table->text('reward');
+            $table->text('reward')->nullable();
             $table->string('detail');
             $table->string('fbappid');
-            $table->integer('counter');
             $table->string('slug');
             $table->softDeletes();
             $table->timestamps();

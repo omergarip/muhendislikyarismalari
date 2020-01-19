@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Announcement;
+use App\Competition;
+use App\Content;
+use App\ContentSeries;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
@@ -13,7 +18,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+//        $this->middleware('auth');
     }
 
     /**
@@ -23,6 +28,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $competitions = Competition::latest()->take(2)->get();
+        $first_content = Content::first();
+        $contents = Content::latest()->get();
+        $announcements = Announcement::latest()->take(2)->get();
+        $first = ContentSeries::where('link', '=', 'usctm')->get();
+        $series = ContentSeries::where('link', '!=', 'usctm')->get();
+
+        return view('index', compact('competitions', 'contents',
+            'announcements', 'first' ,'series', 'first_content'));
+
     }
 }

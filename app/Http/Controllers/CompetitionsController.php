@@ -6,7 +6,8 @@ use App\Competition;
 use App\Http\Requests\Competitions\CreateCompetitionRequest;
 use App\Http\Requests\Competitions\UpdateCompetitionRequest;
 use Analytics;
-use Cocur\Slugify\Slugify;
+use Illuminate\Support\Carbon;
+use Illuminate\Http\Request;
 use Spatie\Analytics\Period;
 
 class CompetitionsController extends Controller
@@ -14,8 +15,18 @@ class CompetitionsController extends Controller
 
     public function index()
     {
+        $pages = Analytics::performQuery(
+            Period::years(1),
+            'ga:pageviews',
+            [
+                'metrics' => 'ga:pageviews',
+                'dimensions' => 'ga:pagePath',
+                'max-results' => '5'
+            ]
+        );
 
-        return view('competitions.index')->with('competitions', Competition::all());
+        //dd($pages);
+        return view('competitions.index')->with('competitions', Competition::paginate(5));
     }
 
     public function create()
@@ -25,7 +36,10 @@ class CompetitionsController extends Controller
 
     public function store(CreateCompetitionRequest $request)
     {
-        $image = $request->image->store('competitions');
+        $name1 = Str::slug($request->image->getClientOriginalName());
+        $filename1 = str_replace(array('jpg','jpeg','png', 'svg'), '',$name1);
+        $filename1 = $filename1 . time() . '.' . $request->image->getClientOriginalExtension();
+        $image = $request->image->storeAs('storage/competition', $filename1);
         Competition::create([
             'organizer' => $request->organizer,
             'title' => $request->title,
@@ -35,16 +49,40 @@ class CompetitionsController extends Controller
             'deadline' => $request->deadline,
             'reward' => $request->reward,
             'detail' => $request->detail,
-            'fbappid' => '2012401338806092',
-            'counter' => 0
+            'fbappid' => '2012401338806092'
         ]);
         session()->flash('success', 'Competition created successfully.');
         return redirect(route('competitions.index'));
     }
 
-    public function show($id)
+    public function show($slug, Request $request)
     {
-        //
+        $competition = Competition::whereSlug($slug)->first();
+        $url = $request->fullUrl();
+        $uri = $request->path();
+        $start_date = Carbon::instance($competition->created_at);
+        $analyticsData = Analytics::performQuery(
+            Period::create($start_date->subDays(1), today()->endOfDay()),
+            'ga:uniquePageviews',
+            [
+                'metrics' => 'ga:uniquePageviews',
+                'dimensions' => 'ga:pagePath',
+                'filters' => 'ga:pagePath==/'.$uri
+            ]
+        );
+         $pageViews = $analyticsData['totalsForAllResults']['ga:uniquePageviews'];
+         $end  = $competition->deadline;
+         $now = today();
+
+         if ($now <= $end)
+            $difference = $now->diffInDays($end);
+          else
+            $difference = -1;
+          return view('competitions.show')
+              ->with('url', $url)
+              ->with('competition', $competition)
+              ->with('difference', $difference)
+              ->with('pageViews', $pageViews);
     }
 
     public function edit($slug)
@@ -56,7 +94,7 @@ class CompetitionsController extends Controller
     public function update(UpdateCompetitionRequest $request, Competition $competition)
     {
         $data = $request->only([
-            'organizer', 'title', 'content',
+            'organizer', 'title', 'contents',
             'deadline', 'reward', 'detail'
         ]);
 

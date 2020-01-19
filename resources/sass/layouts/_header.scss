@@ -1,0 +1,106 @@
+.header{
+	height: 100vh;
+	width: 100%;
+    background-image: linear-gradient(
+        to right bottom, 
+        rgba($color-black, 0.7), 
+        rgba($color-black, 0.7)), 
+        url(../img/MYMockup.png);
+	background-size: cover;
+	background-attachment: fixed;
+	background-position: center;
+	-webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+
+    @include respond(tab-land) {
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 87vh, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 87vh, 0 100%);
+    }
+
+    @include respond(tab-port) {
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 90vh, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 90vh, 0 100%);
+    }
+
+    @include respond(small-phone) {
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 95vh, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 95vh, 0 100%);
+    }
+
+	&__logo {
+		height: 8.5rem;
+		width: 3.5rem;
+		margin-top: 2rem;
+        margin-left: 9rem;
+        margin-right: auto;
+
+		&-black {
+			display: none;
+			height: 4.2rem;
+            width: auto;
+            float: left;
+            margin: 0.5rem 0;
+		}
+	}
+}
+
+.content--carousel {
+    @include center-items;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+/*********************************************************************/
+/* Bootstrap 4 Multiple Item Carousel */
+/*********************************************************************/
+/* medium - display 2  */
+@media (min-width: 768px) {
+
+    .carousel-inner .carousel-item-right.active,
+    .carousel-inner .carousel-item-next {
+        transform: translateX(50%);
+    }
+
+    .carousel-inner .carousel-item-left.active,
+    .carousel-inner .carousel-item-prev {
+        transform: translateX(-50%);
+    }
+}
+
+/* large - display 3 */
+@media (min-width: 992px) {
+
+    .carousel-inner .carousel-item-right.active,
+    .carousel-inner .carousel-item-next {
+        transform: translateX(33%);
+    }
+
+    .carousel-inner .carousel-item-left.active,
+    .carousel-inner .carousel-item-prev {
+        transform: translateX(-33%);
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-inner .carousel-item>div {
+        display: none;
+    }
+
+    .carousel-inner .carousel-item>div:first-child {
+        display: block;
+    }
+}
+
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+    display: flex;
+    height: 98.2%;
+}
+
+.carousel-inner .carousel-item-right,
+.carousel-inner .carousel-item-left {
+    transform: translateX(0);
+}

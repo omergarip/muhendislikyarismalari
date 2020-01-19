@@ -1,0 +1,27 @@
+#announcements-page {
+    padding: 11.1rem 0;
+
+    
+    & .row {
+        padding: 0 15rem;
+
+        @include respond (tab-port) {
+            padding: 0;
+        }
+    }
+
+    & figure {
+        margin-bottom: 5rem;
+    }
+
+    & #heading {
+        @include respond (tab-land) {
+            font-size: 1.6rem;
+            margin-top: 1rem;
+        }
+    }
+}
+
+.card-body {
+    font-size: 1.3rem;
+}

@@ -1,0 +1,336 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&display=swap');
+
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+
+@media (min-width: 992px) {
+    #wrapper #sidebar-wrapper {
+        width: 22.5rem;
+    }
+}
+
+#sidebar-wrapper,
+#content-sidebar-wrapper {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 700;
+    z-index: 1000;
+    border-right: 1px solid $color-grey-light-2;
+    position: fixed;
+    left: 225px;
+    width: 0;
+    height: 100%;
+    margin-left: -225px;
+    overflow-y: auto;
+    background: $color-grey-dark3;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+
+    & .sidebar-nav {
+        position: absolute;
+        top: 0;
+        width: 22.5rem;
+        font-size: 1.3rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        & li {
+            text-indent: 0;
+            line-height: 4.5rem;
+            padding: .15rem 0;
+
+            &:last-child {
+                padding-bottom: 12rem;
+            }
+
+            &:nth-child(1) .active {
+                background-color: $color-academic; 
+
+                &:hover { background-color: darken($color: $color-academic, $amount: 10); }
+            }
+            &:nth-child(2) .active {
+                background-color: $color-scholarship; 
+
+                &:hover { background-color: darken($color: $color-scholarship, $amount: 10); }
+            }
+            &:nth-child(3) .active {
+                background-color: $color-rank; 
+
+                &:hover { background-color: darken($color: $color-rank, $amount: 10); }
+            }
+            &:nth-child(4) .active {
+                background-color: $color-event; 
+
+                &:hover { background-color: darken($color: $color-event, $amount: 10); }
+            }
+            &:nth-child(5) .active {
+                background-color: $color-enterpreneur; 
+
+                &:hover { background-color: darken($color: $color-enterpreneur, $amount: 10); }
+            }
+            &:nth-child(6) .active {
+                background-color: $color-news; 
+
+                &:hover { background-color: darken($color: $color-news, $amount: 10); }
+            }
+            &:nth-child(7) .active {
+                background-color: $color-career; 
+
+                &:hover { background-color: darken($color: $color-career, $amount: 10); }
+            }
+            &:nth-child(8) .active {
+                background-color: $color-intern; 
+
+                &:hover { background-color: darken($color: $color-intern, $amount: 10); }
+            }
+
+            & a {
+                display: block;
+                text-decoration: none;
+                color: $color-white;
+                padding-left: 3rem;
+
+            }
+
+            &:nth-child(1) a:hover { background-color: $color-academic; }
+            &:nth-child(2) a:hover { background-color: $color-scholarship; }
+            &:nth-child(3) a:hover { background-color: $color-rank; }
+            &:nth-child(4) a:hover { background-color: $color-event; }
+            &:nth-child(5) a:hover { background-color: $color-enterpreneur; }
+            &:nth-child(6) a:hover { background-color: $color-news; }
+            &:nth-child(7) a:hover { background-color: $color-career; }
+            &:nth-child(8) a:hover { background-color: $color-intern; }
+
+        }
+    }
+}
+
+.navigation,
+.content-navigation {
+	&__checkbox {
+		display: none;
+	}
+	
+	&__button {
+        opacity: 0;
+        visibility: hidden;
+		background-color: $color-black;
+		height: 7rem;
+		width: 7rem;
+		position: fixed;
+		top: 8rem;
+		right: 6rem;
+		border-radius: 50%;
+		z-index: 2000;
+		box-shadow: 0 1rem 3rem rgba($color-black, .1);
+		text-align: center;
+		cursor: pointer;
+        @include respond(phone) {
+            right: 3rem;
+            top: 7rem;
+            height: 5rem;
+            width: 5rem;
+        }
+	}
+	
+	&__background {
+        opacity: 0;
+        visibility: hidden;
+		height: 6rem;
+		width: 6rem;
+		border-radius: 50%;
+		position: relative;
+		top: 8.5rem;
+		right: 6.5rem;
+		background-color: $color-grey-dark3;
+		z-index: 1001;
+		transition: transform .8s cubic-bezier(0.86, 0, 0.07, 1);
+
+        @include respond(phone) {
+            height: 4rem;
+            width: 4rem;
+        }
+    }
+    
+    @media (max-width: 992px) {
+        .navigation {
+            &__button {
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            &__background {
+                opacity: 1;
+                visibility:  visible;
+            }
+
+            &__item {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
+	
+	&__nav {
+		height: 100vh;
+		width: 0;
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 1500;
+		opacity: 0;
+		transition: all .8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+        @include respond(tab-port) {
+            width: 50rem;
+        }
+
+        @include respond(phone) {
+            width: 40rem;
+        }
+	}
+	
+	&__list {
+		@include center-items;
+		list-style: none;
+		text-align: center;
+		width: 100%;
+	}
+	
+	&__item {
+        opacity: 0;
+        visibility: hidden;
+        margin: 1rem;
+
+        
+        &:first-child .active {
+            background-position: 100%;
+            color: $color-white;
+        }
+
+        &:not(:first-child) .active { background-position: 100%; }
+
+
+        &:nth-child(1) a { background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-academic 50%); }
+        &:nth-child(2) a { background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-scholarship 50%); }
+        &:nth-child(3) a { background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-rank 50%); }
+        &:nth-child(4) a { background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-event 50%); }
+        &:nth-child(5) a { background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-enterpreneur 50%); }
+        &:nth-child(6) a { background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-news 50%); }
+        &:nth-child(7) a { background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-career 50%); }
+        &:nth-child(8) a { background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-intern 50%); }
+ 
+        
+	}
+	
+	&__link {
+		&:link,
+		&:visited {
+			display: inline-block;
+			font-size: 2.3rem;
+            font-family: 'Source Sans Pro', sans-serif!important;
+			font-weight: 700;
+			color: $color-white;
+			padding: 1rem 2rem;
+			text-decoration: none;
+			text-transform: uppercase;
+			background-size: 240%;
+            transition: all .4s;
+
+            @include respond(tab-port) {
+                font-size: 2rem;
+            }
+
+            @include respond(phone) {
+                font-size: 1.6rem;
+            }
+
+            @include respond(small-phone) {
+                font-size: 1.3rem;
+            }
+            
+			span {
+				margin-right: 1.5rem;
+				display: inline-block;
+			}
+		}
+		
+		&:hover,
+		&:active {
+			background-position: 100%;
+			color: $color-white;
+			transform: translateX(1rem);
+		}
+	}
+	
+	&__checkbox:checked ~ &__background {
+		transform: scale(80);
+	}
+	
+	&__checkbox:checked ~ &__nav {
+		opacity: 1;
+		width: 100%;
+
+        @include respond(phone) {
+            width: 40rem;
+        }
+	}
+	
+	&__icon {
+		position: relative;
+		margin-top: 3.5rem;
+
+        @include respond(phone) {
+            margin-top: 2.5rem;
+        }
+		&,
+		&::before,
+		&::after {
+			width: 3rem;
+			height: 2px;
+			background-color: $color-white;
+			display: inline-block;
+		}
+		
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			left: 0;
+			transition: all .2s;
+		}
+		
+		&::before { top: -.8rem; }
+		&::after { top: .8rem; }
+	}
+	
+	&__button:hover &__icon::before {
+		top: -1rem;
+	}
+	
+	&__button:hover &__icon::after {
+		top: 1rem;
+	}
+	
+	&__checkbox:checked + &__button &__icon {
+		background-color: transparent;
+	}
+	
+	&__checkbox:checked + &__button &__icon::before {
+		top: 0;
+		transform: rotate(135deg);
+	}
+	
+	&__checkbox:checked + &__button &__icon::after {
+		top: 0;
+		transform: rotate(-135deg);
+	}
+}

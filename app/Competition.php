@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Storage;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Spatie\Analytics\Analytics;
 
 class Competition extends Model
 {
@@ -35,4 +36,5 @@ class Competition extends Model
             ]
         ];
     }
+
 }

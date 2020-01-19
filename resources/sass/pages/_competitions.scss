@@ -1,0 +1,106 @@
+#competitions-page {
+	padding: 20rem 0;
+
+	@include respond (phone) {
+		padding: 15rem 0;
+    }
+    
+    & .row {
+        padding: 0 15rem;
+
+        @include respond (tab-port) {
+            padding: 0;
+        }
+    }
+
+    & figure {
+        margin-bottom: 5rem;
+    }
+
+    & #heading {
+        @include respond (tab-land) {
+            font-size: 1.6rem;
+            margin-top: 1rem;
+        }
+    }
+    
+
+}
+
+hr {
+    border: 1px solid $color-tertiary-light; 
+
+    @include respond(tab-land) {
+        width: 50%;
+        margin: 0 auto;
+    }
+}
+
+.cerite {
+
+    &-competition {
+        border: 1px solid $color-competition;
+    }
+
+    &-akademik {
+        border: 1px solid $color-academic;
+    }
+    &-burs {
+        border: 1px solid $color-scholarship;
+    }
+    &-derece {
+        border: 1px solid $color-rank;
+    }
+    &-etkinlik {
+        border: 1px solid $color-event;
+    }
+    &-girisimcilik {
+        border: 1px solid $color-enterpreneur;
+    }
+    &-haber {
+        border: 1px solid $color-news;
+    }
+    &-kariyer {
+        border: 1px solid $color-career;
+    }
+    &-staj   {
+        border: 1px solid $color-intern;
+    }
+    @include respond(tab-land) {
+        width: 100%;
+        margin: 0 auto;
+    }
+}
+
+.comp-page--details {
+    font-size: 1.3rem;
+    display: flex;
+    justify-content: space-between;
+
+    @include respond(small-phone) {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    & p {
+        margin: 0;
+    }
+
+}
+
+.list-group {
+    background-color: $color-grey-light-1; 
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding-left: 0;
+
+    & img {
+        height: 6rem!important;
+        width: 12rem!important; 
+        margin: 0 auto;
+    }
+
+    & #heading { font-size: 1.3rem; }
+}

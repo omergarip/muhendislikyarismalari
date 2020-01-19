@@ -1,0 +1,234 @@
+.bttn {
+	&,	
+	&:link,
+	&:visited {
+		text-transform: uppercase;
+		text-decoration: none;
+		padding: 1rem 3.5rem;
+		display: inline-block;
+		border-radius: 10rem;
+		transition: all .2s;
+		position: relative;
+		font-size: $default-font-size;
+		border: none;
+		cursor: pointer;
+	}
+
+	&:hover {
+		transform: translateY(-3px);
+		box-shadow: 0 1rem 2rem rgba($color-black, .2);
+        color: $color-white ;
+        
+			&::after {
+				transform: scaleX(1.4) scaleY(1.6);
+				opacity: 0;
+			}
+	}
+
+	&:active,
+	&:focus {
+		outline: none;
+		transform: translateY(-1px);
+		box-shadow: 0 1rem 1rem rgba($color-black, .2);
+	}
+
+	&--white {
+		background-color: $color-white;
+		color: $color-grey-dark;
+			
+			&::after {
+				background-color: $color-white;
+			}	
+	}
+	
+	&--green {
+		background-color: $color-primary;
+		color: $color-white;
+			
+			&::after {
+				background-color: $color-primary;
+			}	
+	}
+
+	&--competition {
+		&:link,
+        &:visited {
+        border: 0.1rem solid $color-competition;
+        background-color: darken($color-competition, 10%);
+        color: $color-white;
+        }
+
+        &:hover,
+        &:active {
+            background-color: lighten($color-competition, 7%);
+            cursor: pointer;
+        } 
+	}
+
+	&--akademik {
+        &:link,
+        &:visited {
+            border: 0.1rem solid $color-academic;
+            background-color: darken($color-academic, 10%);
+            color: $color-white;
+        }
+        
+        &:hover,
+        &:active {
+            background-color: lighten($color-academic, 7%);
+            cursor: pointer;
+        }
+    }
+
+    &--kariyer {
+        &:link,
+        &:visited {
+            border: 0.1rem solid $color-career;
+            background-color: darken($color-career, 10%);
+            color: $color-white;
+        }
+        
+        &:hover,
+        &:active {
+            background-color: lighten($color-career, 7%);
+            cursor: pointer;
+        }
+    }
+
+    &--girisimcilik {
+        &:link,
+        &:visited {
+            border: 0.1rem solid $color-enterpreneur;
+            background-color: darken($color-enterpreneur, 10%);
+            color: $color-white;
+        }
+        
+        &:hover,
+        &:active {
+            background-color: $color-enterpreneur;
+            cursor: pointer;
+        }
+    }
+
+    &--etkinlik {
+        &:link,
+        &:visited {
+            border: 0.1rem solid $color-event;
+            background-color: darken($color-event, 10%);
+            color: $color-white;
+        }
+        
+        &:hover,
+        &:active {
+            background-color: lighten($color-event, 7%);
+            cursor: pointer;
+        }
+    }
+
+    &--staj {
+        &:link,
+        &:visited {
+            border: 0.1rem solid $color-intern;
+            background-color: darken($color-intern, 10%);
+            color: $color-white;
+        }
+        
+        &:hover,
+        &:active {
+            background-color: lighten($color-intern, 7%);
+            cursor: pointer;
+        }
+    }
+
+    &--haber {
+        &:link,
+        &:visited {
+            border: 0.1rem solid $color-news;
+            background-color: darken($color-news, 10%);
+            color: $color-white;
+        }
+        
+        &:hover,
+        &:active {
+            background-color: lighten($color-news, 7%);
+            cursor: pointer;
+        }
+    }
+
+    &--derece {
+        &:link,
+        &:visited {
+            border: 0.1rem solid $color-rank;
+            background-color: darken($color-rank, 10%);
+            color: $color-white;
+        }
+        
+        &:hover,
+        &:active {
+            background-color: lighten($color-rank, 7%);
+            cursor: pointer;
+        }
+    }
+
+    &--burs {
+        &:link,
+        &:visited {
+            border: 0.1rem solid $color-scholarship;
+            background-color: darken($color-scholarship, 10%);
+            color: $color-white;
+        }
+        
+        &:hover,
+        &:active {
+            background-color: lighten($color-scholarship, 7%);
+            cursor: pointer;
+        }
+    }
+
+	&::after {
+		content: "";
+		display: inline-block;
+		height: 100%;
+		width: 100%;
+		border-radius: 10rem;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: -1;
+		transition: all .4s;
+	}
+
+	
+
+	
+
+	&--animated {
+		animation: moveInBottom .5s ease-out .75s;
+		animation-fill-mode: backwards;
+	}
+}
+
+.btn-text {
+	&:link,
+	&:visited {
+		font-size: $default-font-size;
+		color: $color-secondary-dark;
+		display: inline-block;
+		text-decoration: none;
+		border-bottom: 1px solid $color-secondary-dark;
+		padding: 3px;
+		transition: all .2s;
+	}
+	
+	&:hover {
+		background-color: $color-secondary-dark;
+		color: $color-white;
+		box-shadow: 0 1rem 2rem rgba($color-black, .15);
+		transform: translateY(-2px);
+	}
+	
+	&:active {
+		box-shadow: 0 0.5rem 1rem rgba($color-black, .15);
+		transform: translateY(0);
+	}
+}

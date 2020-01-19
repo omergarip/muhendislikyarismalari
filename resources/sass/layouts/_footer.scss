@@ -1,0 +1,110 @@
+.footerbc {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+        @include respond (tab-port) {
+                flex-direction: column;
+                align-items: center;
+            }
+  }
+  .footer {
+      position: relative;
+      bottom: 0;
+      left: 0;
+      z-index: 1000;
+      width: 100%;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      background: $color-black; 
+      padding-top: 1.5rem;
+  }
+  .footer p {
+      color: #fff;
+      margin-left: 20px;
+  }
+  div .copyright {
+      display: flex;
+      align-items: center;
+  }
+  /* Links Styles */
+  div .links {
+      display: flex;
+      align-items: center;
+  }
+  div .links ul {
+      display: flex;
+  }
+  .links a {
+      color: #ffffff;
+      text-decoration: none !important;
+      background-color: transparent;
+      -webkit-text-decoration-skip: objects;
+  }
+  ul.quick-links li:hover{
+      font-weight:700;
+  }
+  ul.quick-links li a i{
+      margin-right: 5px;
+      margin-left: 10px;
+  }
+  ul.quick-links li:hover a i {
+      font-weight: 700;
+  }
+  
+  /* Social Styles*/
+  div .social {
+      display: flex;
+      align-items: center;
+  }
+  .social a {
+      display: inline-block;
+      padding-right: 5px;
+      padding-left: 5px;
+      font-size: 1.6rem;        
+  }
+  .social .fab {
+      border-radius: 50%;
+      width: 4rem;
+      height: 4rem;
+      line-height: 4rem;
+      text-align: center;
+      color: #FFF;
+      color: rgba(255, 255, 255, 0.8);
+      -webkit-transition: all 0.3s ease-in-out;
+      -moz-transition: all 0.3s ease-in-out;
+      -ms-transition: all 0.3s ease-in-out;
+      -o-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+  }
+  .social .fab:hover {
+      -webkit-box-shadow: 1px 1px 3px #333;
+      -moz-box-shadow: 1px 1px 3px #333;
+      box-shadow: 1px 1px 3px #333; 
+      -webkit-transform: scale(1.1) rotate(360deg);
+      -moz-transform: scale(1.1) rotate(360deg);
+      -ms-transform: scale(1.1) rotate(360deg);
+      -o-transform: scale(1.1) rotate(360deg);
+      transform: scale(1.1) rotate(360deg);
+  }
+  .social a:hover {
+      color: #FFF;
+  }
+  .social .fab.fa-facebook-f {
+      background-color:#3C599F;
+  }
+  .social .fab.fa-linkedin {
+      background-color:#0077B5;
+  }
+  .social .fab.fa-twitter {
+      background-color: #0084b4;
+  }
+  .social .fab.fa-youtube {
+      background-color: #ff0000;
+  }
+  .social .fab.fa-instagram {
+      background: #f09433; 
+      background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+      background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+      background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+  }

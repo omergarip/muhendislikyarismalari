@@ -1,0 +1,44 @@
+.section-competitions {
+	background-color: $color-grey-light-1;
+	padding: 25rem 0;
+	margin-top: -20vh;
+
+	@include respond (phone) {
+		padding: 20rem 0;
+	}
+
+}
+
+.section-contents {
+	padding: 20rem 0;
+    background-image: linear-gradient(
+        to right bottom, 
+        rgba($color-tertiary-light, 0.7), 
+		rgba($color-tertiary-dark, 0.7)), 
+		url(../img/1.jpg);
+    background-size: 100% 100%;
+    transform: skewY(-7deg);
+	margin-top: -11.5rem;
+	
+
+	& > * {
+		transform: skewY(7deg);
+	}
+
+	@include respond (tab-port) {
+		padding: 12.5rem 0;
+	}
+
+
+	
+}
+
+.section-announcements {
+	background-color: $color-grey-light-1;
+	padding: 25rem 0 15rem 0;
+	margin-top: -11.5rem;
+
+	@include respond (tab-port) {
+		padding: 17.5rem 0 10rem 0;
+	}
+}

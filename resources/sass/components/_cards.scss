@@ -1,0 +1,116 @@
+.competitions {
+    max-width: 70rem;
+    width: 100%;
+    border-radius: 0.4rem;
+    overflow: hidden;
+    box-shadow: 0 0.3rem 0.3rem 0.3rem rgba(0, 0, 0, 0.2);
+    display: flex;
+    height: 85%;
+
+    @include respond(tab-port) {
+        width: 60rem;
+    }
+
+    @include respond(phone) {
+        width: 50rem;
+    }
+
+    @include respond(small-phone) {
+        width: 35rem;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    &__hero {
+        display: flex;
+        flex: 0 1 35%;
+        align-items: center;
+    }
+
+    &__img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform .2s;
+
+        @include respond(small-phone) {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+        }
+        
+        &:hover {
+            transform:  scale(1.05);
+            box-shadow: 0 2.5rem 4rem rgba($color-black, .5);
+        }           
+    }
+
+    &__content {
+        flex: 1;
+        background: white;
+        padding: 3.5rem 3rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        @include respond(small-phone) {
+            padding: 1.5rem 3rem;
+        }
+    }
+
+    &__title {
+        display: flex;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+
+    &__heading {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: black;
+        margin-right: auto;
+
+    }
+
+    &__description {
+        font-size: 1.8rem;
+        list-style: none;
+
+        &span {
+            flex-shrink: 0;
+            width: 75%;
+        }
+
+        &.label {
+            font-weight: 700;
+            width: 25%;
+            margin-right: 1.6px;
+        }
+    }
+
+    &__social { background: linear-gradient(to bottom, lighten($color-competition, 10%), darken($color-competition, 10%)); }
+
+    &__details {
+        display: flex;
+        margin-top: auto;
+        margin-left: auto;
+
+        @include respond(small-phone) {
+            margin: 1.5rem auto 0 auto;
+        }
+    }
+}
+
+.tags {
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: white;
+    padding: 4px 7px;
+    border-radius: 100px;
+    margin-left: 7px;
+	margin-top: -20px
+}
+
+col-lg-6 {
+    margin-bottom: 2rem;
+}

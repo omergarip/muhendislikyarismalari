@@ -1,0 +1,189 @@
+.tw:hover { background-color: $color-tw; }
+.fb:hover { background-color: $color-fb; }
+.wp:hover { background-color: $color-wp; }
+.ln:hover { background-color: $color-ln; }
+
+.social__buttons {
+    flex: 0 0 5rem;
+    writing-mode: vertical-rl;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    @include respond(small-phone) {
+        flex: 0 0 40px;
+        writing-mode: horizontal-tb;
+    }
+
+    & i {
+        color: white;
+    }
+
+    & a {
+        text-decoration: none;
+        border-radius: 5.6rem;
+        cursor: pointer;
+        height: 2.9rem;
+        width: 2.9rem;
+        font-size: 1.75em;
+        line-height: 2.6rem;
+        margin: 0 3px;
+        -webkit-user-select: none;
+           -moz-user-select: none;
+            -ms-user-select: none;
+                user-select: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.announcements {
+    &__social { 
+        &-akademik {
+            background: linear-gradient(to bottom, lighten($color-academic, 10%), darken($color-academic, 10%)); 
+        }
+        &-kariyer {
+            background: linear-gradient(to bottom, lighten($color-career, 10%), darken($color-career, 10%)); 
+        }
+        &-girisimcilik {
+            background: linear-gradient(to bottom, lighten($color-enterpreneur, 10%), darken($color-enterpreneur, 10%)); 
+        }
+        &-etkinlik {
+            background: linear-gradient(to bottom, lighten($color-event, 10%), darken($color-event, 10%)); 
+        }
+        &-staj {
+            background: linear-gradient(to bottom, lighten($color-intern, 10%), darken($color-intern, 10%)); 
+        }
+        &-haber {
+            background: linear-gradient(to bottom, lighten($color-news, 10%), darken($color-news, 10%)); 
+        }
+        &-derece {
+            background: linear-gradient(to bottom, lighten($color-rank, 10%), darken($color-rank, 10%)); 
+        }
+        &-burs {
+            background: linear-gradient(to bottom, lighten($color-scholarship, 10%), darken($color-scholarship, 10%)); 
+        }
+    }
+}
+
+#social2 {
+    & .social_panel {
+        display: flex;
+        margin: 2rem 0;
+        justify-content: space-between;
+
+        & .fa-share-alt {
+            font-size: 1.6rem;
+            padding-top: 1.3rem;
+
+            @include respond(phone) {
+                display: none;
+            }
+        }
+
+        & a {
+            display: flex;
+            font-size: 1.6rem;
+            margin-right: .5rem;
+            border-radius: 4rem ;
+            font-weight: bold;
+            background-color: #3f51b5;
+            opacity: 1;
+            flex: 1 1 0%;
+            text-decoration: none;
+            color: #fff;
+            justify-content: center;
+            align-items: center;
+
+            & .social_share {
+                padding: 0 0 0 .5rem;
+
+                @include respond(tab-port) {
+                    padding-top: 0;
+                }
+
+                @include respond(phone) {
+                    display: none;
+                }
+            }
+
+        }
+
+        & .social_count {
+            display: flex;
+            font-weight: bold;
+            padding-left: 4.5rem;
+            margin-top: -.3rem;
+        }
+
+        & .fb:hover {
+            transform: scale(1.03);
+        }
+        & .ln:hover {
+            transform: scale(1.03);
+        }
+        & .wp:hover {
+            transform: scale(1.03);
+        }
+        & .tw:hover {
+            transform: scale(1.03);
+        }
+
+        & .shared-count{
+            font-size: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-left: .8rem;
+            margin-right: 5px;
+            background: none;
+            
+            @include respond(phone) {
+                display: none;
+            }
+
+            & .number{
+                font-size: 1.9em;
+                display: inline-block;
+                color: #474b4d;
+                font-weight: bold;
+                text-align: center;
+            }
+
+            & .shares{
+                font-size: 1.3em;
+                display: block;
+                color: #474b4d;
+                margin-top: -12px;
+            }
+        }
+
+        & .page-view {
+            font-size: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: none;
+
+            & .read_number{
+                font-size: 1.9em;
+                display: inline-block;
+                color: #474b4d;
+                font-weight: bold;
+                text-align: center;
+            }
+
+            & .read{
+                font-size: 1.3em;
+                display: block;
+                color: #474b4d;
+                margin-top: -12px;
+            }
+        }
+    }
+}
+

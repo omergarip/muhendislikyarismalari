@@ -1,0 +1,19 @@
+.tags {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: white;
+    padding: 4px 7px;
+    border-radius: 100px;
+    margin-left: 7px;
+	margin-top: -20px
+}
+
+.akademik__tag { background-color: $color-academic; }
+.kariyer__tag { background-color: $color-career; }
+.competitions__tag { background-color: $color-competition; }
+.girisimcilik__tag { background-color: $color-enterpreneur; }
+.etkinlik__tag { background-color: $color-event; }
+.staj__tag { background-color: $color-intern; }
+.haber__tag { background-color: $color-news; }
+.derece__tag { background-color: $color-rank; }
+.burs__tag { background-color: $color-scholarship; }
