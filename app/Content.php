@@ -4,10 +4,12 @@ namespace App;
 
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Content extends Model
 {
     use Sluggable;
+    use SoftDeletes;
 
     protected $fillable = [
         'user_id', 'cover', 'series_link',

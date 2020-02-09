@@ -26,7 +26,7 @@
                             <figure class="competitions">
                                 <div class="competitions__hero">
                                     <a href="{{ route('competitions.show', $competition->slug) }}">
-                                        <img src="{{ asset('/public/img/'.$competition->image) }}" alt="{{ $competition->title }}" class="competitions__img">
+                                        <img src="{{ asset('storage/'.$competition->image) }}" alt="{{ $competition->title }}" class="competitions__img">
                                     </a>
                                 </div>
                                 <div class="competitions__content">
@@ -109,7 +109,7 @@
                             <div class="carousel-item active">
                                 <div class="col-lg-4 col-md-6">
                                     <a href="{{ route('contents.link', $first_content[0]->link) }}">
-                                        <img class="img-fluid" src="{{ asset('/'.$first_content[0]->cover) }}">
+                                        <img class="img-fluid" src="{{ asset('storage/'.$first_content[0]->cover) }}">
                                     </a>
                                 </div>
                             </div>
@@ -117,7 +117,7 @@
                                 <div class="carousel-item">
                                     <div class="col-lg-4 col-md-6">
                                         <a href="{{ route('contents.show', [$content->series_link, $content->slug]) }}">
-                                            <img class="img-fluid" src="{{ asset('/'.$content->cover) }}">
+                                            <img class="img-fluid" src="{{ asset('storage/'.$content->cover) }}">
                                         </a>
                                     </div>
                                 </div>
@@ -141,7 +141,7 @@
                             <div>
                                 <figure class="contents mx-auto">
                                     <a href="{{ route('contents.show', [$content->series_link, $content->slug]) }}">
-                                        <img src="{{ asset('/'.$content->cover) }}" class="img-fluid" alt="{{ $content->title }}">
+                                        <img src="{{ asset('storage/'.$content->cover) }}" class="img-fluid" alt="{{ $content->title }}">
                                     </a>
                                 </figure>
                             </div>
@@ -168,7 +168,7 @@
                             <figure class="competitions u-margin-bottom-big u-margin-top-big">
                                 <div class="competitions__hero">
                                     <a href="{{ route('announcements.show', [$announcement->category_slug, $announcement->slug]) }}">
-                                        <img src="{{ asset('/'.$announcement->image) }}" alt="{{ $announcement->title }}" class="competitions__img">
+                                        <img src="{{ asset('storage/'.$announcement->image) }}" alt="{{ $announcement->title }}" class="competitions__img">
                                     </a>
                                 </div>
                                 <div class="competitions__content">
@@ -226,7 +226,7 @@
                                     </a>
                                 </div>
                             </figure>
-                        </div>
+                        </div> 
                     @endforeach
                 </div>
 

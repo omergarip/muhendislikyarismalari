@@ -118,12 +118,12 @@ $(document).ready(function() {
         $(".navigation__nav").css("display", "block");
 });
 
-//Function to the css rule
-function checkSize(){
-    if ($(".navigation__button").css("opacity") == "0" ){
-        $(".navigation__checkbox").prop("checked", false);
-    }
-}
+$("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#dashboard-wrapper").toggleClass("toggled");
+});
 
-
+$(document).on('change', '.custom-file-input', function (event) {
+    $(this).next('.custom-file-label').html(event.target.files[0].name);
+})
 

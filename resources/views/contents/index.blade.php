@@ -60,7 +60,7 @@
                                         <div>
                                             <figure class="contents mx-auto">
                                                 <a href="{{ route('contents.show', [$content->series_link, $content->slug]) }}">
-                                                    <img src="{{ asset('/'.$content->cover) }}" class="img-fluid" alt="{{ $content->title }}">
+                                                    <img src="{{ asset('storage/'.$content->cover) }}" class="img-fluid" alt="{{ $content->title }}">
                                                 </a>
                                             </figure>
                                         </div> <!-- End of the list  -->

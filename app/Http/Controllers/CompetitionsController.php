@@ -8,6 +8,7 @@ use App\Http\Requests\Competitions\UpdateCompetitionRequest;
 use Analytics;
 use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Spatie\Analytics\Period;
 
 class CompetitionsController extends Controller
@@ -31,7 +32,7 @@ class CompetitionsController extends Controller
 
     public function create()
     {
-        return view('competitions.create');
+        return view('admin.competitions.create');
     }
 
     public function store(CreateCompetitionRequest $request)
@@ -39,7 +40,7 @@ class CompetitionsController extends Controller
         $name1 = Str::slug($request->image->getClientOriginalName());
         $filename1 = str_replace(array('jpg','jpeg','png', 'svg'), '',$name1);
         $filename1 = $filename1 . time() . '.' . $request->image->getClientOriginalExtension();
-        $image = $request->image->storeAs('storage/competition', $filename1);
+        $image = $request->image->storeAs('storage/competitions', $filename1);
         Competition::create([
             'organizer' => $request->organizer,
             'title' => $request->title,
@@ -52,7 +53,7 @@ class CompetitionsController extends Controller
             'fbappid' => '2012401338806092'
         ]);
         session()->flash('success', 'Competition created successfully.');
-        return redirect(route('competitions.index'));
+        return redirect(route('competitions.dindex'));
     }
 
     public function show($slug, Request $request)
@@ -88,7 +89,7 @@ class CompetitionsController extends Controller
     public function edit($slug)
     {
         $competition = Competition::whereSlug($slug)->first();
-        return view('competitions.create')->with('competition', $competition);
+        return view('admin.competitions.create')->with('competition', $competition);
     }
 
     public function update(UpdateCompetitionRequest $request, Competition $competition)
@@ -99,33 +100,45 @@ class CompetitionsController extends Controller
         ]);
 
         if($request->hasFile('image')) {
-            $image = $request->image->store('competitions');
-            $competition->deleteImage();
+            $name = Str::slug($request->image->getClientOriginalName());
+            $filename = str_replace(array('jpg','jpeg','png', 'svg'), '',$name);
+            $filename = $filename . time() . '.' . $request->image->getClientOriginalExtension();
+            $image = $request->image->storeAs('storage/competitions', $filename);
+            @unlink('storage/'.$competition->image);
             $data['image'] = $image;
         }
         $data['user_id'] = auth()->id();
         $competition->update($data);
         session()->flash('success', 'Competition updated succesfully');
-        return redirect(route('competitions.index'));
+        return redirect(route('competitions.dindex'));
     }
 
     public function destroy($id)
     {
         $competition = Competition::withTrashed()->where('id', $id)->firstOrFail();
         if($competition->trashed()) {
-            $competition->deleteImage();
+            @unlink('storage/'.$competition->image);
             $competition->forceDelete();
         } else {
             $competition->delete();
         }
         session()->flash('success', 'Competition deleted succesfully');
-        return redirect(route('competitions.index'));
+        return redirect(route('competitions.dindex'));
     }
+
+    public function dashboardIndex()
+    {
+        $removed_competitions = Competition::onlyTrashed()->get();
+        return view('admin.competitions.index')
+            ->with('competitions', Competition::all())
+            ->with('removed_competitions', $removed_competitions);
+
+    }
+
     public function trashed()
     {
         $trashed = Competition::onlyTrashed()->get();
-
-        return view('competitions.index')->withCompetitions($trashed);
+        return view('competitions.dindex')->withCompetitions($trashed);
     }
 
     public function restore($id)
@@ -135,4 +148,6 @@ class CompetitionsController extends Controller
         session()->flash('success', 'Competition restored succesfully');
         return redirect()->back();
     }
+
+
 }

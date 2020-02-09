@@ -18,6 +18,7 @@ class CreateContentsTable extends Migration
             $table->string('cover');
             $table->integer('user_id');
             $table->integer('publisher_id');
+            $table->string('page_title');
             $table->string('title');
             $table->string('series_link');
             $table->text('description');

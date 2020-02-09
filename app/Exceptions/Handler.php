@@ -46,6 +46,10 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($exception instanceof \Illuminate\Database\Eloquent\ModelNotFoundException) {
+            session()->flash('error', 'Bir hata oluştu. Lütfen tekrar deneyiniz!');
+            return redirect()->back();
+        }
         return parent::render($request, $exception);
     }
 }

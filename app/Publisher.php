@@ -8,7 +8,8 @@ class Publisher extends Model
 {
 
     protected $fillable = [
-        'fullname', 'school', 'title'
+        'fullname', 'school', 'title',
+        'photo'
     ];
 
 

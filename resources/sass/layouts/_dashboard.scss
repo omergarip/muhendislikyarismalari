@@ -1,0 +1,81 @@
+.section-dashboard {
+    overflow-x: hidden;
+    font-size: 1.5rem;
+
+    & input,
+      select {
+        font-size: 1.4rem;
+    }
+
+    & img {
+        width: 4rem;
+        height: 4rem;
+    }
+
+    & #menu-toggle {
+        border: 0;
+        background-color: inherit;
+    }
+
+    & #dashboard-sidebar-wrapper {
+        background-color: $color-grey-dark3!important;
+        min-height: 100vh;
+        margin-left: -15rem;
+        -webkit-transition: margin .25s ease-out;
+        -moz-transition: margin .25s ease-out;
+        -ms-transition: margin .25s ease-out;
+        -o-transition: margin .25s ease-out;
+        transition: margin .25s ease-out;
+
+        @include respond(min-phone) {
+            margin-left: 0;
+        }
+
+        & .sidebar-heading {
+
+            color: $color-white;
+            padding: 1.25rem 1.25rem;
+            font-size: 1.2rem;
+        }
+
+        & .list-group {
+            width: 15rem;
+
+            & a {
+                background-color: $color-grey-dark3!important;
+                color: $color-white;
+                border: 0;
+                transition: background-color 0.2s ease-in;
+
+                &:hover {
+                    background-color: $color-secondary-dark!important;
+                }
+
+                &.active {
+                    background-color: $color-secondary-dark!important;
+                }
+            }
+        }
+    }
+
+    & #dashboard-page-content-wrapper {
+        min-width: 100vw;
+
+        @include respond(min-phone) {
+            min-width: 0;
+            width: 100%;
+        }
+    }
+
+    & #dashboard-wrapper.toggled #dashboard-sidebar-wrapper {
+        margin-left: 0;
+
+        @include respond(min-phone) {
+            margin-left: -15rem;
+        }
+    }
+
+    & .show-menu {
+        display: none;
+    }
+}

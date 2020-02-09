@@ -19,7 +19,7 @@
                     <div class="carousel-item active">
                         <div class="col-lg-4 col-md-6">
                             <a href="{{ route('contents.link', $first[0]->link) }}">
-                                <img class="img-fluid" src="{{ URL::asset($first[0]->cover) }}" alt="$first[0]->series_name">
+                                <img class="img-fluid" src="{{ asset('storage/'.$first[0]->cover) }}" alt="$first[0]->series_name">
                             </a>
                         </div>
                     </div>
@@ -27,7 +27,7 @@
                             <div class="carousel-item">
                                 <div class="col-lg-4 col-md-6">
                                     <a href="{{ route('contents.link', $item->link) }}">
-                                        <img class="img-fluid" src="{{ URL::asset($item->cover) }}" alt="{{ $item->series_name }}">
+                                        <img class="img-fluid" src="{{ asset('storage/'.$item->cover) }}" alt="{{ $item->series_name }}">
                                     </a>
                                 </div>
                             </div>

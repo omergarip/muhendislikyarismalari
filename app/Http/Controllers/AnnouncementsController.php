@@ -24,7 +24,7 @@ class AnnouncementsController extends Controller
 
     public function create()
     {
-        return view('announcements.create')->with('categories', Category::all());
+        return view('admin.announcements.create')->with('categories', Category::all());
     }
 
     public function store(Request $request)
@@ -41,12 +41,12 @@ class AnnouncementsController extends Controller
             'image' => $image,
             'description' => $request->description,
             'deadline' => $request->deadline,
-            'reward' => '',
+            'reward' => $request->reward,
             'detail' => $request->detail,
             'fbappid' => '2012401338806092'
         ]);
         session()->flash('success', 'Competition created successfully.');
-        return redirect(route('announcements.index'));
+        return redirect(route('announcements.dindex'));
     }
 
     public function show($link, $slug, Request $request)
@@ -74,24 +74,51 @@ class AnnouncementsController extends Controller
             $difference = -1;
         return view('announcements.show')
             ->with('url', $url)
-            ->with('announcement', $announcement)
+            ->with('announcements', $announcement)
             ->with('difference', $difference)
             ->with('pageViews', $pageViews);
     }
 
-    public function edit($id)
+    public function edit($slug)
     {
-        //
+        $announcement = Announcement::whereSlug($slug)->first();
+        return view('admin.announcements.create')
+            ->with('announcement', $announcement)
+            ->with('categories',  Category::all());
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Announcement $announcement)
     {
-        //
+        $data = $request->only([
+            'organizer', 'title', 'contents',
+            'deadline', 'reward', 'detail', 'category_slug'
+        ]);
+
+        if($request->hasFile('image')) {
+            $name = Str::slug($request->image->getClientOriginalName());
+            $filename = str_replace(array('jpg','jpeg','png', 'svg'), '',$name);
+            $filename = $filename . time() . '.' . $request->image->getClientOriginalExtension();
+            $image = $request->image->storeAs('storage/announcements', $filename);
+            @unlink('storage/'.$announcement->image);
+            $data['image'] = $image;
+        }
+        $data['user_id'] = auth()->id();
+        $announcement->update($data);
+        session()->flash('success', 'Competition updated succesfully');
+        return redirect(route('announcements.dindex'));
     }
 
     public function destroy($id)
     {
-        //
+        $announcement = Announcement::withTrashed()->where('id', $id)->firstOrFail();
+        if($announcement->trashed()) {
+            @unlink('storage/'.$announcement->image);
+            $announcement->forceDelete();
+        } else {
+            $announcement->delete();
+        }
+        session()->flash('success', 'Competition deleted succesfully');
+        return redirect(route('announcements.dindex'));
     }
 
     public function categories($link, Request $request)
@@ -101,5 +128,27 @@ class AnnouncementsController extends Controller
         return view('announcements.index', compact('uri'))
             ->with('categories', Category::all())
             ->with('announcements', $announcements);
+    }
+
+    public function dashboardIndex()
+    {
+        $removed_announcements = Announcement::onlyTrashed()->get();
+        return view('admin.announcements.index')
+            ->with('announcements', Announcement::all())
+            ->with('removed_announcements', $removed_announcements);
+    }
+
+    public function trashed()
+    {
+        $trashed = Announcement::onlyTrashed()->get();
+        return view('admin.announcements.index')->withAnnouncements($trashed);
+    }
+
+    public function restore($id)
+    {
+        $competition = Announcement::withTrashed()->where('id', $id)->firstOrFail();
+        $competition->restore();
+        session()->flash('success', 'Duyuru geri alindi.');
+        return redirect()->back();
     }
 }

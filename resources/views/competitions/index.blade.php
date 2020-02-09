@@ -20,7 +20,7 @@
                             @foreach($competitions as $competition)
                             <figure class="competitions mx-auto">
                                 <div class="competitions__hero">
-                                    <img src="{{ asset('/storage/'.$competition->image) }}" alt="{{ $competition->title }}" class="competitions__img">
+                                    <img src="{{ asset('storage/'.$competition->image) }}" alt="{{ $competition->title }}" class="competitions__img">
                                 </div>
                                 <div class="competitions__content">
                                     <div class="competitions__title">

@@ -59,7 +59,7 @@
                                     <figure class="competitions mx-auto">
                                         <div class="competitions__hero">
                                             <a href="{{ route('announcements.show', [$announcement->category_slug, $announcement->slug]) }}">
-                                                <img src="{{ asset('/'.$announcement->image) }}" alt="{{ $announcement->title }}" class="competitions__img">
+                                                <img src="{{ asset('storage/'.$announcement->image) }}" alt="{{ $announcement->title }}" class="competitions__img">
                                             </a>
                                         </div>
                                         <div class="competitions__content">
