@@ -12,22 +12,6 @@
         <label for="navi-toggle" class="navigation__button">
             <span class="navigation__icon">&nbsp;</span>
         </label>
-
-        <div class="navigation__background">&nbsp;</div>
-
-        <nav class="navigation__nav">
-            <ul class="navigation__list">
-                @foreach($categories as $category)
-                    <li class="content-navigation__item">
-
-                        <a class="navigation__link {{ $uri == 'duyurular/'.$category->slug ? 'active' : ''}}"
-                           href="{{ route('announcements.link', $category->slug) }}" >
-                            {{ $category->category_name }}
-                        </a>
-                    </li>
-                @endforeach
-            </ul>
-        </nav>
     </div>
     <section  class="section-announcements" id="announcements-page">
         <div id="wrapper">

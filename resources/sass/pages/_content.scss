@@ -1,7 +1,6 @@
 #content-page {
-    padding: 0;
+    padding: 5.3rem 0;
     background-color: $color-grey-light-1;
-    margin-top: -.7rem;
 
     & .row {
         padding: 0 4rem 0 30rem;
@@ -110,8 +109,18 @@
 
     &__detail {
         font-size: 1.5rem;
+        font-family: inherit!important;
         text-align: justify;
         justify-content: center;
+
+        & iframe {
+            width: 100%;
+            height: 40rem;
+        }
+
+        & p a {
+            background-color: inherit!important;
+        }
 
         & ul {
             padding-left: 3.5rem;
@@ -136,14 +145,7 @@
 
         }
     }
-
-
-
-
-
-
 }
-
 
 @media (min-width: 992px) {
     #wrapper #content-sidebar-wrapper {
@@ -152,9 +154,15 @@
 }
 
 #content-sidebar-wrapper {
+    &.toggled {
+        width: 32rem!important;
+    }
+
     & .sidebar-nav {
         width: 33rem;
-        
+
+
+
         & li { 
             line-height: 3.5rem;
         
@@ -312,63 +320,11 @@
     }
 }
 
-.content-navigation {
-    &__item {
-        
-        &:first-child a {
-            margin-top: 12rem;
-            background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-content-series1 50%);
-            &:hover { color: $color-white; }
-        }
-
-        &:nth-child(2) a { background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-content-series2 50%); }
-        &:nth-child(3) a { background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-content-series3 50%); }
-        &:nth-child(4) a { background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-content-series4 50%); }
-        &:nth-child(5) a { background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-content-series5 50%); }
-        &:nth-child(6) a { background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-content-series6 50%); }
-        &:nth-child(7) a { background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-content-series7 50%); }
-        &:nth-child(8) a { background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-content-series8 50%); }
-        &:nth-child(9) a { background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-content-series9 50%); }
-        &:nth-child(10) a { background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-content-series10 50%); }
-        &:nth-child(11) a { background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-content-series11 50%); }
-        &:nth-child(12) a { background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-content-series12 50%); }
-        &:nth-child(13) a { background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-content-series13 50%); }
-        &:nth-child(14) a { background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-content-series14 50%); }
-        &:nth-child(15) a { background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-content-series15 50%); }
-        &:nth-child(16) a { background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-content-series16 50%); }
-        &:nth-child(17) a { background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-content-series17 50%); }
-        &:nth-child(18) a { background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-content-series18 50%); }
-        &:nth-child(19) a { background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-content-series19 50%); }
-        &:nth-child(20) a { background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-content-series20 50%); }
-        &:nth-child(21) a { background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-content-series21 50%); }
-        &:nth-child(22) a { background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-content-series22 50%); }
-        &:nth-child(23) a { background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-content-series23 50%); }
-    }
-
-
-}
-
 @media (max-width: 992px) {
     .content-navigation {
         &__button {
             opacity: 1;
             visibility: visible;
         }
-        
-        &__background {
-            opacity: 1;
-            visibility:  visible;
-        }
-
-        &__item {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        &__list {
-            overflow-y: auto;
-            max-height: 100%;
-        }
-        
     }
 }

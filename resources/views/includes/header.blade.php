@@ -2,7 +2,7 @@
     <nav>
         <div class="row">
             <a href="{{ route('home') }}" style="margin-right: auto;">
-                <img src="{{ url('img/favicon.png') }}" alt="Mühendislik Yarışmaları" class="header__logo">
+                <img src="{{ url('img/favicon.png') }}" alt="Mühendislik Yarışmaları" class="header__logo d-none">
             </a>
             <ul class="main-nav js--main-nav">
                 <li><a class="mainlink" href="{{ route('competitions.index') }}">Yarışmalar</a></li>

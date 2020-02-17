@@ -1,18 +1,6 @@
 <!doctype html>
 <html lang="tr">
 <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131523931-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'UA-131523931-1');
-    </script>
-    
-    
-    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -38,7 +26,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/OverlayScrollbars.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.v1.1.css') }}">
     <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
 
     @yield('css')
@@ -67,9 +57,11 @@
 
     </main>
 </div>
+
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/jquery.waypoints.min.js') }}"></script>
-<script src="{{ asset('js/script.js') }}"></script>
+<script src="{{ asset('js/jquery.overlayScrollbars.min.js') }}"></script>
+<script src="{{ asset('js/script.v1.js') }}"></script>
 <script src="https://kit.fontawesome.com/e651d63672.js" crossorigin="anonymous"></script>
 @yield('scripts')
 </body>

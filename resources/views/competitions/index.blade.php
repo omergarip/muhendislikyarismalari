@@ -6,7 +6,6 @@
 
 @section('contents')
     @include('includes.navigation')
-    <div class="content" style="background-color: #f5f5f5;">
         <section class="section-competitions" id="competitions-page">
             <div class="row mx-auto">
                 @if($competitions->count() > 0)
@@ -72,12 +71,9 @@
 
             </div> <!-- End of the row  -->
             {{ $competitions->links() }}
-
-
-        </section>
             <div class="container">
-                
-            
+
+
                 <div class="card card-default">
                     <div class="card-header">
                         <div class="card-body">
@@ -86,8 +82,11 @@
                     </div>
                 </div>
             </div>
-                @endif
-</div>
+
+        </section>
+
+        @endif
+
     @include('includes.footer')
 
 @endsection

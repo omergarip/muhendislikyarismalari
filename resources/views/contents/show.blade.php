@@ -5,7 +5,7 @@
     <meta property="og:url"           content="{{ $url }}" />
     <meta property="og:type"          content="website" />
     <meta property="og:title"         content="{{$content->page_title}}" />
-    <meta property="og:description"         content="{{$content->description}}" />
+    <meta property="og:description"   content="{{$content->description}}" />
     <meta property="og:image"          itemprop="image"       content="{{ asset('/'.$content->cover) }}" />
 @endsection
 
@@ -20,7 +20,7 @@
     <div class="container u-margin-bottom-big u-margin-top-small"> <!--Container-->
         <div class="content-page"> <!-- Blog Header-->
             <div class="brow" > <!-- Row -->
-                <div class="col-sm-10 mx-auto"> <!-- Main Blog Area -->
+                <div class="col-sm-11 mx-auto"> <!-- Main Blog Area -->
                     <div class="content-header u-margin-top-big">
                         <div class="content-header__top ">
                             <h1>{{ $content->page_title }}</h1>
@@ -145,5 +145,3 @@
     </div>
     @include('includes.footer')
 @endsection
-
-[5] Overture by Wilhem Conrad Röntgen<br/><a style="font-size: 1.3rem; word-break: break-all;" href="http://www.xtal.iqfr.csic.es/Cristalografia/parte_10-en.html">http://www.xtal.iqfr.csic.es/Cristalografia/parte_10-en.html</a><br/>[6] Eckert, M., (2012), Max von Laue and the discovery of X-ray diffraction in 1912, Ann. Phys. (Berlin) 524, No. 5, A83–A85.

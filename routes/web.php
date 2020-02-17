@@ -19,8 +19,8 @@ Route::get('dashboard', 'DashboardController@index')->middleware('auth');
 
 
 Route::get('giris-yap', 'Auth\LoginController@showLoginForm');
-Route::post('giris-yap', 'Auth\AuthController@login');
-Route::get('cikis-yap', 'Auth\AuthController@logout');
+Route::post('giris-yap', 'Auth\LoginController@login');
+Route::get('cikis-yap', 'Auth\LoginController@logout');
 
 Route::get('kayitol', 'Auth\RegisterController@showRegistrationForm')->name('register-form');
 Route::post('kayitol', 'Auth\RegisterController@register')->name('register');

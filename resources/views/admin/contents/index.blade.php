@@ -46,29 +46,30 @@
                                     @if($content->cover == '')
                                         <img src="https://www.pngkey.com/png/detail/230-2301779_best-classified-apps-default-user-profile.png">
                                     @else
-                                        <img src="{{ asset('storage/'.$content->cover) }}">
+                                        <img src="{{ asset('/'.$content->cover) }}">
                                     @endif
                                 </td>
                                 <td>{{ $content->page_title }}</td>
                                 <td>{{ $content->title }} </td>
                                 <td>{{ $content->series_link }}</td>
                                 <td><a class="btn btn-primary"
-                                        href="{{ route('contents.show', [$content->series_link, $content->slug]) }}">Önizle</a></td>
+                                       href="{{ route('contents.show', [$content->series_link, $content->slug]) }}"
+                                       target="_blank">Önizle</a></td>
                                 <td>
                                     @if(auth()->user()->user_type != '$content-manager' || auth()->user()->user_type != 'admin')
-                                            <div class="dropdown">
-                                                <button class="btn-success btn dropdown-toggle form-control" data-toggle="dropdown">Güncelle</button>
-                                                <div class="dropdown-menu">
-                                                    <a href="{{ route('contents.edit', $content->slug) }}" class="dropdown-item">Detaylar</a>
-                                                    <a href="{{ route('media.edit', $content->id) }}" class="dropdown-item">Fotoğraf</a>
-                                                    <a href="" class="dropdown-item">İçerik</a>
-                                                </div>
-                                            <form action="{{ route('contents.reverse', $content->id)}}" method="POST">
-                                                @csrf
-                                                @method('put')
-                                                <button class="form-control btn btn-sm btn-danger">Geri Çek</button>
-                                            </form>
+                                        <div class="dropdown">
+                                            <button class="btn-success btn dropdown-toggle form-control" data-toggle="dropdown">Güncelle</button>
+                                            <div class="dropdown-menu">
+                                                <a href="{{ route('contents.edit', $content->slug) }}" class="dropdown-item">Detaylar</a>
+                                                <a href="{{ route('media.edit', $content->id) }}" class="dropdown-item">İçerik</a>
+                                            </div>
                                         </div>
+                                        <form action="{{ route('contents.reverse', $content->id)}}" method="POST">
+                                            @csrf
+                                            @method('put')
+                                            <button class="form-control btn btn-sm btn-danger">Geri Çek</button>
+                                        </form>
+
                                     @endif
                                 </td>
                             </tr>
@@ -87,6 +88,8 @@
                             <th>Link</th>
                             <th>Başlık</th>
                             <th>İçerik Serisi</th>
+                            <th>Önizle</th>
+                            <th>Güncelle</th>
                             <th>Aksiyon</th>
                         </tr>
                         </thead>
@@ -98,15 +101,29 @@
                                     @if($content->cover == '')
                                         <img src="https://www.pngkey.com/png/detail/230-2301779_best-classified-apps-default-user-profile.png">
                                     @else
-                                        <img src="{{ asset('storage/'.$content->cover) }}">
+                                        <img src="{{ asset('/'.$content->cover) }}">
                                     @endif
                                 </td>
                                 <td>{{ $content->page_title }}</td>
                                 <td>{{ $content->title }} </td>
                                 <td>{{ $content->series_link }}</td>
+                                <td><a class="btn btn-primary"
+                                       href="{{ route('contents.show', [$content->series_link, $content->slug]) }}"
+                                       target="_blank">Önizle</a></td>
+                                <td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="btn-success btn dropdown-toggle form-control" data-toggle="dropdown">Güncelle</button>
+                                        <div class="dropdown-menu">
+                                            <a href="{{ route('contents.edit', $content->slug) }}" class="dropdown-item">Detaylar</a>
+                                            <a href="{{ route('media.edit', $content->id) }}" class="dropdown-item">İçerik</a>
+                                        </div>
+                                    </div>
+                                </td>
                                 <td>
                                     @if(auth()->user()->user_type != '$content-manager' || auth()->user()->user_type != 'admin')
                                         <div class="form-group">
+
                                             <form action="{{ route('contents.publish', $content->id)}}" method="POST">
                                                 @csrf
                                                 @method('put')
@@ -147,7 +164,7 @@
                                     @if($content->cover == '')
                                         <img src="https://www.pngkey.com/png/detail/230-2301779_best-classified-apps-default-user-profile.png">
                                     @else
-                                        <img src="{{ asset('storage/'.$content->cover) }}">
+                                        <img src="{{ asset('/'.$content->cover) }}">
                                     @endif
                                 </td>
                                 <td>{{ $content->page_title }}</td>

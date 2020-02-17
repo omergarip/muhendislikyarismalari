@@ -9,29 +9,12 @@
     <div class="content" style="background-color: #f5f5f5;">
         <div class="content-navigation">
             <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
-
-            <label for="navi-toggle" class="navigation__button">
+            <label for="navi-toggle" class="navigation__button" id="content-navigation__button">
                 <span class="navigation__icon">&nbsp;</span>
             </label>
-
-            <div class="navigation__background">&nbsp;</div>
-
-            <nav class="navigation__nav">
-                <ul class="content-navigation__list">
-                    @foreach($series as $cseries)
-                        <li class="content-navigation__item">
-                            <a class="navigation__link {{ $uri == 'icerikler/'.$cseries->link ? 'active' : ''}}"
-                               href="{{ route('contents.link', $cseries->link) }}" >
-                                {{ $cseries->series_name }}
-                            </a>
-                        </li>
-                    @endforeach
-                </ul>
-            </nav>
         </div>
         <main>
             <section class="section-content" id="content-page">
-
                 <div id="wrapper">
                     <div id="content-sidebar-wrapper">
                         <aside id="sidebar">

@@ -32,8 +32,8 @@ class HomeController extends Controller
     public function index()
     {
         $competitions = Competition::latest()->take(2)->get();
-        $first_content = Content::first();
-        $contents = Content::latest()->get();
+        $first_content = Content::where('status', '=', 'on')->latest()->get();
+        $contents = Content::where('status', 'on')->where('id', '!=', $first_content[0]->id)->latest()->get();
         $announcements = Announcement::latest()->take(2)->get();
         $first = ContentSeries::where('link', '=', 'usctm')->get();
         $series = ContentSeries::where('link', '!=', 'usctm')->get();
@@ -41,23 +41,5 @@ class HomeController extends Controller
         return view('index', compact('competitions', 'contents',
             'announcements', 'first' ,'series', 'first_content'));
 
-    }
-
-    public function list()
-    {
-        return view('test');
-    }
-
-    public function upload(Request $request)
-    {
-        $content = Content::latest()->take(1)->get();
-        $name = Str::slug($request->file->getClientOriginalName());
-        $filename = str_replace(array('jpg','jpeg','png', 'svg'), '',$name);
-        $filename = $filename . time() . '.' . $request->file->getClientOriginalExtension();
-        $image = $request->file->storeAs('contents', $filename);
-        ContentMedia::create([
-            'image' => $image,
-            'content_id' => $content[0]->id,
-        ]);
     }
 }

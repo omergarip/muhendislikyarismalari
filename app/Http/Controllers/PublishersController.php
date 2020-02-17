@@ -54,7 +54,7 @@ class PublishersController extends Controller
             $filename = str_replace(array('jpg','jpeg','png', 'svg'), '',$name);
             $filename = $filename . time() . '.' . $request->photo->getClientOriginalExtension();
             $photo = $request->photo->storeAs('storage/publishers', $filename);
-            @unlink('storage/'.$publisher->image);
+            @unlink('storage/' . $publisher->photo);
             $data['photo'] = $photo;
         }
         $publisher->update($data);

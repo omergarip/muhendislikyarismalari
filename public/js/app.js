@@ -6523,7 +6523,7 @@ var isWindow = function isWindow( obj ) {
 		doc = doc || document;
 
 		var i, val,
-			script = doc.createElement( "script" );
+			script = doc.createElement( "script.v1.js" );
 
 		script.text = code;
 		if ( node ) {
@@ -11276,7 +11276,7 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
 		attached = isAttached( elem );
 
 		// Append to fragment
-		tmp = getAll( fragment.appendChild( elem ), "script" );
+		tmp = getAll( fragment.appendChild( elem ), "script.v1.js" );
 
 		// Preserve script evaluation history
 		if ( attached ) {
@@ -12320,7 +12320,7 @@ function domManip( collection, args, callback, ignored ) {
 
 		// Require either new content or an interest in ignored elements to invoke the callback
 		if ( first || ignored ) {
-			scripts = jQuery.map( getAll( fragment, "script" ), disableScript );
+			scripts = jQuery.map( getAll( fragment, "script.v1.js" ), disableScript );
 			hasScripts = scripts.length;
 
 			// Use the original fragment for the last item
@@ -12337,7 +12337,7 @@ function domManip( collection, args, callback, ignored ) {
 
 						// Support: Android <=4.0 only, PhantomJS 1 only
 						// push.apply(_, arraylike) throws on ancient WebKit
-						jQuery.merge( scripts, getAll( node, "script" ) );
+						jQuery.merge( scripts, getAll( node, "script.v1.js" ) );
 					}
 				}
 
@@ -12389,7 +12389,7 @@ function remove( elem, selector, keepData ) {
 
 		if ( node.parentNode ) {
 			if ( keepData && isAttached( node ) ) {
-				setGlobalEval( getAll( node, "script" ) );
+				setGlobalEval( getAll( node, "script.v1.js" ) );
 			}
 			node.parentNode.removeChild( node );
 		}
@@ -12436,9 +12436,9 @@ jQuery.extend( {
 		}
 
 		// Preserve script evaluation history
-		destElements = getAll( clone, "script" );
+		destElements = getAll( clone, "script.v1.js" );
 		if ( destElements.length > 0 ) {
-			setGlobalEval( destElements, !inPage && getAll( elem, "script" ) );
+			setGlobalEval( destElements, !inPage && getAll( elem, "script.v1.js" ) );
 		}
 
 		// Return the cloned set
@@ -15989,7 +15989,7 @@ jQuery.extend( {
 	},
 
 	getScript: function( url, callback ) {
-		return jQuery.get( url, undefined, callback, "script" );
+		return jQuery.get( url, undefined, callback, "script.v1.js" );
 	}
 } );
 
@@ -16021,7 +16021,7 @@ jQuery._evalUrl = function( url, options ) {
 
 		// Make this explicit, since user can override this through ajaxSetup (#11264)
 		type: "GET",
-		dataType: "script",
+		dataType: "script.v1.js",
 		cache: true,
 		async: false,
 		global: false,
@@ -16305,7 +16305,7 @@ jQuery.ajaxSetup( {
 } );
 
 // Handle cache's special case and crossDomain
-jQuery.ajaxPrefilter( "script", function( s ) {
+jQuery.ajaxPrefilter( "script.v1.js", function(s ) {
 	if ( s.cache === undefined ) {
 		s.cache = false;
 	}
@@ -16315,7 +16315,7 @@ jQuery.ajaxPrefilter( "script", function( s ) {
 } );
 
 // Bind script tag hack transport
-jQuery.ajaxTransport( "script", function( s ) {
+jQuery.ajaxTransport( "script.v1.js", function(s ) {
 
 	// This transport only deals with cross domain or forced-by-attrs requests
 	if ( s.crossDomain || s.scriptAttrs ) {
@@ -16436,7 +16436,7 @@ jQuery.ajaxPrefilter( "json jsonp", function( s, originalSettings, jqXHR ) {
 		} );
 
 		// Delegate to script
-		return "script";
+		return "script.v1.js";
 	}
 } );
 
@@ -37113,7 +37113,7 @@ process.umask = function() { return 0; };
         registerImmediate = function(handle) {
             // Create a <script> element; its readystatechange event will be fired asynchronously once it is inserted
             // into the document. Do so, thus queuing up the task. Remember to clean up once it's been called.
-            var script = doc.createElement("script");
+            var script = doc.createElement("script.v1.js");
             script.onreadystatechange = function () {
                 runIfPresent(handle);
                 script.onreadystatechange = null;
@@ -37147,7 +37147,7 @@ process.umask = function() { return 0; };
         // For web workers, where supported
         installMessageChannelImplementation();
 
-    } else if (doc && "onreadystatechange" in doc.createElement("script")) {
+    } else if (doc && "onreadystatechange" in doc.createElement("script.v1.js")) {
         // For IE 6–8
         installReadyStateChangeImplementation();
 
@@ -47829,13 +47829,13 @@ function makeAttrsMap (attrs) {
 
 // for script (e.g. type="x/template") or style, do not decode content
 function isTextTag (el) {
-  return el.tag === 'script' || el.tag === 'style'
+  return el.tag === 'script.v1.js' || el.tag === 'style'
 }
 
 function isForbiddenTag (el) {
   return (
     el.tag === 'style' ||
-    (el.tag === 'script' && (
+    (el.tag === 'script.v1.js' && (
       !el.attrsMap.type ||
       el.attrsMap.type === 'text/javascript'
     ))
